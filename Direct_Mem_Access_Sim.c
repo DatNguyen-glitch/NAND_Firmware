@@ -1,15 +1,4 @@
-#include <pthread.h>
-#include <stdio.h>
-
-#define RAM_SIZE (1024 * 1024) // 1MB RAM
-uint8_t phys_mem[RAM_SIZE];
-
-typedef struct {
-	uint32_t dst_addr;
-	uint32_t src_addr;
-	uint32_t len;
-	volatile uint8_t DMA_en;
-} DMA_controller;
+#include "Direct_Mem_Access_Sim.h"
 
 void *dma_thread_func(void *DMA_struct)
 {
@@ -28,7 +17,7 @@ void *dma_thread_func(void *DMA_struct)
 	}
 }
 
-void main(){
+void dma_test_main(){
 	pthread_t dma_thread;
 	DMA_controller dma = {};
 	DMA_controller *dma_ptr = &dma; 
